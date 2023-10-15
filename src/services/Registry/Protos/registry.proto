@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcRegistry";
+
+package RegistryApi;
+
+service RegistryGrpc {
+  rpc RegisterItemTemplate(RegisterItemTemplateCommand) returns (ItemTemplateDto);
+  rpc DeleteItemTemplate(DeleteItemTemplateCommand) returns (DeleteResult);
+}
+
+message RegisterItemTemplateCommand {
+  string name = 1;
+  string description = 2;
+  bytes iconData = 3;
+  bool isStackable = 4;
+  string creatorId = 5;
+}
+
+message DeleteItemTemplateCommand {
+  string id = 1;
+}
+
+message DeleteResult {
+  bool success = 1;
+  int32 existingCount = 2;
+}
+
+message ItemTemplateDto {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string iconUrl = 4;
+  bool isStackable = 5;
+  string creatorId = 6;
+}

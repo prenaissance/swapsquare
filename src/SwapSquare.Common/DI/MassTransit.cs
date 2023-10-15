@@ -1,5 +1,6 @@
 namespace SwapSquare.Common.DI;
 
+using System.Reflection;
 using global::MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ public static class MassTransit
     {
         services.AddMassTransit(x =>
         {
+            x.AddConsumers(Assembly.GetExecutingAssembly());
             x.UsingRabbitMq((ctx, rabbitMqConfig) =>
             {
                 var configuration = ctx.GetRequiredService<IConfiguration>();
