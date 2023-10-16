@@ -15,6 +15,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{D6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Registry.Api", "src\services\Registry\SwapSquare.Registry.Api.csproj", "{1381909B-65CB-4993-A9DE-F9A5C5BE32D4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.Api", "src\services\Authentication\Authentication.Api\SwapSquare.Authentication.Api.csproj", "{91002E90-ECED-427D-8531-6CC1D425EFCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.Application", "src\services\Authentication\Authentication.Application\SwapSquare.Authentication.Application.csproj", "{2C6624D8-4A00-4660-A348-87C6744E48CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.DataAccess", "src\services\Authentication\Authentication.DataAccess\SwapSquare.Authentication.DataAccess.csproj", "{08281BDB-539A-4FDD-B0DB-A1A9FE110464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.Domain", "src\services\Authentication\Authentication.Domain\SwapSquare.Authentication.Domain.csproj", "{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +46,22 @@ Global
 		{1381909B-65CB-4993-A9DE-F9A5C5BE32D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1381909B-65CB-4993-A9DE-F9A5C5BE32D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1381909B-65CB-4993-A9DE-F9A5C5BE32D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91002E90-ECED-427D-8531-6CC1D425EFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91002E90-ECED-427D-8531-6CC1D425EFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91002E90-ECED-427D-8531-6CC1D425EFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91002E90-ECED-427D-8531-6CC1D425EFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6624D8-4A00-4660-A348-87C6744E48CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6624D8-4A00-4660-A348-87C6744E48CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6624D8-4A00-4660-A348-87C6744E48CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6624D8-4A00-4660-A348-87C6744E48CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08281BDB-539A-4FDD-B0DB-A1A9FE110464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08281BDB-539A-4FDD-B0DB-A1A9FE110464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08281BDB-539A-4FDD-B0DB-A1A9FE110464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08281BDB-539A-4FDD-B0DB-A1A9FE110464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B19FFCE0-0110-4CCB-8101-1DA43279BF2D} = {48254D08-F035-4475-BE1A-4ED54B173284}
@@ -43,5 +69,10 @@ Global
 		{C00A7ACF-884E-4B21-AF1F-7299445C147A} = {D5DA1213-4122-415A-84B9-131DD1B3498A}
 		{D6AF88AE-2F38-4466-817D-CAD92E5D5ACF} = {48254D08-F035-4475-BE1A-4ED54B173284}
 		{1381909B-65CB-4993-A9DE-F9A5C5BE32D4} = {D6AF88AE-2F38-4466-817D-CAD92E5D5ACF}
+		{F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB} = {D6AF88AE-2F38-4466-817D-CAD92E5D5ACF}
+		{91002E90-ECED-427D-8531-6CC1D425EFCF} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
+		{2C6624D8-4A00-4660-A348-87C6744E48CE} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
+		{08281BDB-539A-4FDD-B0DB-A1A9FE110464} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
+		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
 	EndGlobalSection
 EndGlobal
