@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json.schemastore.org/ocelot",
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost"
+  },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/authentication/{everything}",
+      "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete"]
+    }
+  ]
+}
