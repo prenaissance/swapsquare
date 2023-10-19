@@ -10,7 +10,13 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<UserEntity>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
+        builder.Property(x => x.Username).HasMaxLength(256);
+        builder.HasIndex(x => x.Username)
+            .IsUnique();
         builder.Property(x => x.Email).HasMaxLength(256);
+        builder.HasIndex(x => x.Email)
+            .IsUnique()
+            .AreNullsDistinct(false);
         builder.Property(x => x.PasswordHash).HasMaxLength(256);
         builder.Property(x => x.PasswordSalt).HasMaxLength(256);
         builder.HasMany(x => x.RefreshTokens).WithOne().HasForeignKey(x => x.UserId)

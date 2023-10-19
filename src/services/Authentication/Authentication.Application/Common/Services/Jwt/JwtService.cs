@@ -1,30 +1,35 @@
-namespace SwapSquare.Authentication.Application.Common.Services.Jwt;
-
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SwapSquare.Authentication.Application.Configuration;
 using SwapSquare.Authentication.Domain.Aggregates.User;
 
-public class JwtService : IJwtService
+namespace SwapSquare.Authentication.Application.Common.Services.Jwt;
+
+public sealed class JwtService : IJwtService, IDisposable
 {
-    private readonly byte[] _key;
+    private readonly RSA _rsa;
     private readonly TimeSpan _tokenLifetime;
     private readonly TimeSpan _refreshTokenLifetime;
-    public JwtService(JwtSettings jwtSettings)
+    public JwtService(IOptions<JwtSettings> jwtSettingsOptions)
     {
-        _key = Convert.FromBase64String(jwtSettings.SymmetricKey);
+        JwtSettings jwtSettings = jwtSettingsOptions.Value;
+        _rsa = RSA.Create();
+        _rsa.ImportFromPem(jwtSettings.PrivateKey);
         _tokenLifetime = TimeSpan.FromMinutes(jwtSettings.ExpirationInMinutes);
         _refreshTokenLifetime = TimeSpan.FromMinutes(jwtSettings.RefreshTokenExpirationInDays);
     }
-    public string GenerateTokenForUser(User user) => GenerateTokenForUser(user, "swap-square");
-    public string GenerateTokenForUser(User user, string audience)
+    public TokenPairResponse GenerateTokensForUser(User user) => GenerateTokensForUser(user, "swap-square");
+    public TokenPairResponse GenerateTokensForUser(User user, string audience)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
         Claim[] claims = [
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new(JwtRegisteredClaimNames.Email, user.Email ?? ""),
+            new(JwtRegisteredClaimNames.UniqueName, user.Username),
         ];
 
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -34,12 +39,25 @@ public class JwtService : IJwtService
             Issuer = "swap-square",
             Audience = audience,
             SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(_key),
-                SecurityAlgorithms.HmacSha256Signature
-            )
+                new RsaSecurityKey(_rsa),
+                SecurityAlgorithms.RsaSha512Signature)
+            {
+                CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false }
+            },
         };
 
         var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+        string accessToken = tokenHandler.WriteToken(token);
+        string refreshToken = user.CreateRefreshToken().Token;
+        return new TokenPairResponse
+        {
+            AccessToken = accessToken,
+            RefreshToken = refreshToken,
+        };
+    }
+
+    public void Dispose()
+    {
+        _rsa.Dispose();
     }
 }

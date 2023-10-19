@@ -8,7 +8,7 @@ using SwapSquare.Common.Settings;
 
 public static class MassTransit
 {
-    private static Action<BinderOptions> binderOptionsFactory = options =>
+    private readonly static Action<BinderOptions> binderOptionsFactory = options =>
     {
         options.BindNonPublicProperties = false;
         options.ErrorOnUnknownConfiguration = true;

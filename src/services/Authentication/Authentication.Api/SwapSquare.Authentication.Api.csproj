@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Authentication.Application\SwapSquare.Authentication.Application.csproj" />
     <ProjectReference Include="..\Authentication.Domain\SwapSquare.Authentication.Domain.csproj" />
     <ProjectReference Include="..\Authentication.DataAccess\SwapSquare.Authentication.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\SwapSquare.Common\SwapSquare.Common.csproj" />
   </ItemGroup>
 
 </Project>

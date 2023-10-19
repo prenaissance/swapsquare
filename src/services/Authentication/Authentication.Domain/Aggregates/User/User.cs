@@ -1,3 +1,4 @@
+using SwapSquare.Authentication.Domain.Aggregates.User.Exceptions;
 using SwapSquare.Authentication.Domain.Common;
 
 namespace SwapSquare.Authentication.Domain.Aggregates.User;
@@ -10,6 +11,7 @@ public class User : AggregateRoot
     private readonly List<RefreshToken> _refreshTokens = [];
     public IReadOnlyList<RefreshToken> RefreshTokens => _refreshTokens.AsReadOnly();
     public string? Email { get; set; }
+    public bool HasCredentialsAuthentication() => PasswordHash is not null && PasswordSalt is not null;
 
     public RefreshToken CreateRefreshToken(int daysToExpire = 7)
     {
@@ -32,10 +34,12 @@ public class User : AggregateRoot
     }
     public RefreshToken ReplaceRefreshToken(string token, string ipAddress, int daysToExpire = 7)
     {
-        var refreshToken = _refreshTokens.SingleOrDefault(x => x.Token == token);
+        var refreshToken = _refreshTokens
+            .Where(r => r.RevokedAt is null)
+            .SingleOrDefault(x => x.Token == token);
         if (refreshToken is null)
         {
-            throw new KeyNotFoundException("Refresh token not found");
+            throw new RefreshTokenInvalidException("No active refresh token found for the given token");
         }
 
         var newRefreshToken = CreateRefreshToken(daysToExpire);
