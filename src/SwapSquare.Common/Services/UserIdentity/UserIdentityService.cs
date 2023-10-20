@@ -23,6 +23,6 @@ public class UserIdentityService : IUserIdentityService
             return null;
         }
 
-        return new CommonUserInfo(userId, username, email);
+        return new CommonUserInfo(Guid.Parse(userId), username, email);
     }
 }

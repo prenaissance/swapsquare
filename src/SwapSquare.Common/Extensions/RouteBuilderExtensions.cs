@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
 
-namespace SwapSquare.Authentication.Api.Extensions;
+namespace SwapSquare.Common.Extensions;
 
 public static class RouteBuilderExtensions
 {
@@ -19,7 +19,7 @@ public static class RouteBuilderExtensions
                         {
                             Reference = new OpenApiReference
                             {
-                                Id = JwtBearerDefaults.AuthenticationScheme,
+                                Id = "Bearer",
                                 Type = ReferenceType.SecurityScheme
                             }
                         },
