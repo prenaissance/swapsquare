@@ -13,7 +13,7 @@
           "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/api/authentication/{everything}",
+      "UpstreamPathTemplate": "/api/auth/{everything}",
       "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete"],
       "SwaggerKey": "authentication"
     }
