@@ -1,3 +1,4 @@
+using SwapSquare.Authentication.Domain.Aggregates.User.Events;
 using SwapSquare.Authentication.Domain.Aggregates.User.Exceptions;
 using SwapSquare.Authentication.Domain.Common;
 
@@ -5,6 +6,7 @@ namespace SwapSquare.Authentication.Domain.Aggregates.User;
 
 public class User : AggregateRoot
 {
+    public new Guid Id { get; set; } = Guid.NewGuid();
     public string Username { get; set; } = null!;
     public byte[]? PasswordHash { get; set; }
     public byte[]? PasswordSalt { get; set; }
@@ -46,5 +48,10 @@ public class User : AggregateRoot
         refreshToken.RevokedAt = DateTime.UtcNow;
         refreshToken.RevokedByIp = ipAddress;
         return newRefreshToken;
+    }
+
+    public void MarkAsNewlyCreated()
+    {
+        AddEvent(new UserCreatedDomainEvent(Id, Email, Username));
     }
 }

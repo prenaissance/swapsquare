@@ -35,6 +35,7 @@ public static class AuthenticationRoutes
             PasswordHash = hash,
             PasswordSalt = salt
         };
+        user.MarkAsNewlyCreated();
         var tokenPair = jwtService.GenerateTokensForUser(user);
 
         await userRepository.AddAsync(user);
@@ -50,8 +51,7 @@ public static class AuthenticationRoutes
         return TypedResults.Ok(tokenPair);
     }
 
-    public static async Task<IResult>
-        SignIn(
+    public static async Task<IResult> SignIn(
         SignInCredentialsDto signInUserCredentialsDto,
         IUserRepository userRepository,
         IPasswordService passwordService,

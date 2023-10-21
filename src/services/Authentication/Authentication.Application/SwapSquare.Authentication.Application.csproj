@@ -2,9 +2,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Authentication.Domain\SwapSquare.Authentication.Domain.csproj" />
+    <ProjectReference Include="..\Authentication.Events\SwapSquare.Authentication.Events.csproj" />
+    <ProjectReference Include="..\..\..\SwapSquare.Common\SwapSquare.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.1.1" />
+    <PackageReference Include="Mediatr" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0-rc.2.23480.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-rc.2.23479.6" />
   </ItemGroup>

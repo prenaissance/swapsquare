@@ -8,11 +8,14 @@ using SwapSquare.Authentication.DataAccess.Persistance;
 using SwapSquare.Authentication.Application;
 using SwapSquare.Authentication.Api.Routes;
 using SwapSquare.Common.DI;
+using SwapSquare.Common.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 // bind config for JwtSettings
 builder.Services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+builder.Services.Configure<RabbitMqSettings>(configuration.GetSection("RabbitMq"));
+
 JwtSettings jwtSettings = configuration.GetSection("Jwt").Get<JwtSettings>()!;
 RSA rsa = RSA.Create();
 rsa.ImportFromPem(jwtSettings.PublicKey);
