@@ -25,6 +25,14 @@ public class AuthDbContext(
             .Entries<AggregateRoot>()
             .SelectMany(x => x.Entity.DomainEvents)
             .ToArray();
+        foreach (var domainEvent in events)
+        {
+            await mediator.Publish(domainEvent, cancellationToken);
+        }
+        foreach (var entity in ChangeTracker.Entries<AggregateRoot>())
+        {
+            entity.Entity.ClearEvents();
+        }
         return result;
     }
 }
