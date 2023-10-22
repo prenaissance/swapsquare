@@ -3,7 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication.Domain\SwapSquare.Authentication.Domain.csproj" />
     <ProjectReference Include="..\Authentication.Events\SwapSquare.Authentication.Events.csproj" />
-    <ProjectReference Include="..\..\..\SwapSquare.Common\SwapSquare.Common.csproj" />
+    <ProjectReference Include="..\..\..\packages\SwapSquare.Common\SwapSquare.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
