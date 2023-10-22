@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48254D08-F035-4475-BE1A-4ED54B173284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Common", "src\SwapSquare.Common\SwapSquare.Common.csproj", "{B19FFCE0-0110-4CCB-8101-1DA43279BF2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Common", "src\packages\SwapSquare.Common\SwapSquare.Common.csproj", "{B19FFCE0-0110-4CCB-8101-1DA43279BF2D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{D5DA1213-4122-415A-84B9-131DD1B3498A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateways", "gateways", "{D5DA1213-4122-415A-84B9-131DD1B3498A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.ApiGateway", "src\Gateways\SwapSquare.ApiGateway\SwapSquare.ApiGateway.csproj", "{C00A7ACF-884E-4B21-AF1F-7299445C147A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.ApiGateway", "src\gateways\SwapSquare.ApiGateway\SwapSquare.ApiGateway.csproj", "{C00A7ACF-884E-4B21-AF1F-7299445C147A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{D6AF88AE-2F38-4466-817D-CAD92E5D5ACF}"
 EndProject
@@ -24,6 +24,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.DataAccess", "src\services\Authentication\Authentication.DataAccess\SwapSquare.Authentication.DataAccess.csproj", "{08281BDB-539A-4FDD-B0DB-A1A9FE110464}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.Domain", "src\services\Authentication\Authentication.Domain\SwapSquare.Authentication.Domain.csproj", "{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.Authentication.Events", "src\services\Authentication\Authentication.Events\SwapSquare.Authentication.Events.csproj", "{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sidecars", "sidecars", "{904B92BF-7E53-4A76-8544-EBDF20F3A7BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileUpload", "FileUpload", "{35333A09-D4CD-4631-AA2D-C599C833E493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.FileUpload.Api", "src\sidecars\FileUpload\FileUpload.Api\SwapSquare.FileUpload.Api.csproj", "{B15CE7AE-B292-4B11-A426-18EFF1ABD667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapSquare.FileUpload.Contracts", "src\sidecars\FileUpload\FileUpload.Contracts\SwapSquare.FileUpload.Contracts.csproj", "{05686E8F-511F-4493-B47A-E7F0302C94C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +72,18 @@ Global
 		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15CE7AE-B292-4B11-A426-18EFF1ABD667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15CE7AE-B292-4B11-A426-18EFF1ABD667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15CE7AE-B292-4B11-A426-18EFF1ABD667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15CE7AE-B292-4B11-A426-18EFF1ABD667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05686E8F-511F-4493-B47A-E7F0302C94C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05686E8F-511F-4493-B47A-E7F0302C94C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05686E8F-511F-4493-B47A-E7F0302C94C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05686E8F-511F-4493-B47A-E7F0302C94C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B19FFCE0-0110-4CCB-8101-1DA43279BF2D} = {48254D08-F035-4475-BE1A-4ED54B173284}
@@ -74,5 +96,10 @@ Global
 		{2C6624D8-4A00-4660-A348-87C6744E48CE} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
 		{08281BDB-539A-4FDD-B0DB-A1A9FE110464} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
 		{F09E4128-C47D-4A26-AC6C-653D0BDB8AE0} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
+		{9FA9C9C1-A658-4AA5-B49D-D2351C02AEBC} = {F3EA33D0-03A0-42F7-BC9B-B7479AD02AFB}
+		{904B92BF-7E53-4A76-8544-EBDF20F3A7BE} = {48254D08-F035-4475-BE1A-4ED54B173284}
+		{35333A09-D4CD-4631-AA2D-C599C833E493} = {904B92BF-7E53-4A76-8544-EBDF20F3A7BE}
+		{B15CE7AE-B292-4B11-A426-18EFF1ABD667} = {35333A09-D4CD-4631-AA2D-C599C833E493}
+		{05686E8F-511F-4493-B47A-E7F0302C94C6} = {35333A09-D4CD-4631-AA2D-C599C833E493}
 	EndGlobalSection
 EndGlobal

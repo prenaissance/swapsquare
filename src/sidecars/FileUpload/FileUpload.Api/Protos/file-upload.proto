@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "SwapSquare.GrpcFileUpload";
+
+package FileUploadApi;
+
+service FileUpload {
+  rpc UploadPublicFile (stream FileUploadRequest) returns (FileUploadResponse);
+}
+
+message ResizeParameters {
+  int32 width = 1;
+  int32 height = 2;
+  bool keepAspectRatio = 3;
+}
+
+message FileUploadRequest {
+  string name = 1;
+  string mimeType = 2;
+  ResizeParameters resizeParameters = 3;
+  bytes chunk = 4;
+}
+
+message FileUploadResponse {
+  string name = 1;
+  string mimeType = 2;
+  string url = 3;
+}
